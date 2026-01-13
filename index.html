@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchiveOS | Blue Archive Inspired Distro</title>
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-pink: #ff00ff;
+            --dark-bg: #0a0b10;
+            --card-bg: #161b22;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Hero Bölümü */
+        header {
+            height: 80vh;
+            background: linear-gradient(rgba(10, 11, 16, 0.7), rgba(10, 11, 16, 0.7)),
+                        url('archive.jpg'); /* Şehir temalı arka plan */
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 10%;
+            border-bottom: 4px solid var(--neon-blue);
+        }
+
+        .hero-text { max-width: 600px; }
+
+        h1 {
+            font-size: 5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #ccc;
+        }
+
+        .btn-group { display: flex; gap: 20px; }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-main {
+            background: var(--neon-blue);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .btn-alt {
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+        }
+
+        .btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+        .anime-img {
+            max-height: 70vh;
+            filter: drop-shadow(0 0 20px var(--neon-blue));
+        }
+
+        /* Dil Seçici */
+        .lang-switch {
+            text-align: right;
+            padding: 20px 10%;
+            font-size: 0.9rem;
+        }
+
+        .lang-switch span { cursor: pointer; margin-left: 10px; opacity: 0.6; }
+        .lang-switch .active { opacity: 1; color: var(--neon-blue); font-weight: bold; }
+
+        /* Özellikler */
+        .features {
+            padding: 50px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid var(--neon-blue);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-10px); background: #1c2128; }
+
+        .card h3 { color: var(--neon-blue); margin-top: 0; }
+
+        /* Alt Espri Kutusu */
+        .quote-box {
+            margin: 50px 10%;
+            padding: 20px;
+            border: 1px solid var(--neon-blue);
+            background: rgba(255, 0, 255, 0.05);
+            text-align: center;
+            font-style: italic;
+        }
+
+        footer { text-align: center; padding: 40px; opacity: 0.5; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="lang-switch">
+        <span id="tr-btn" class="active" onclick="toggleLang('tr')">Türkçe</span>
+        <span id="en-btn" onclick="toggleLang('en')">English</span>
+    </div>
+
+    <header>
+        <div class="hero-text">
+            <h1>ArchiveOS</h1>
+            <p class="subtitle" id="hero-sub">
+                [TR] Blue Archive'dan Fırlamış Gibi! | [EN] Straight Outta Blue Archive!
+            </p>
+            <div class="btn-group">
+                <a href="https://drive.google.com/file/d/1BpnuXc0MnbYv1ITCs_TIKhtyh9S7Iycz/view?usp=sharing" class="btn btn-main" id="dl-btn">ISO İndir (Download)</a>
+                <a href="https://github.com/ArchiveOS-Owners" class="btn btn-alt" id="gh-btn">GitHub Page</a>
+            </div>
+        </div>
+        <img src="archiveos.png" alt="Sensei's Girl" class="anime-img">
+    </header>
+
+    <div class="features">
+        <div class="card">
+            <h3 id="f1-t">Oyun Odaklı Optimize</h3>
+            <p id="f1-d">Archiveos Guide. Steam, Lutris, Heroic - hepsi hazır!</p>
+        </div>
+        <div class="card">
+            <h3 id="f2-t">Günlük Kullanıma Uygun</h3>
+            <p id="f2-d">Hafif, hızlı, web ve ofis işleri için optimize edilmiş kullanıcı dostu arayüz.</p>
+        </div>
+        <div class="card">
+            <h3 id="f3-t">Blue Archive Esintisi</h3>
+            <p id="f3-d">Özel ikonlar ve temalar sensei ler için özenle yapıldı
+    </div>
+
+    <div class="quote-box" id="quote">
+        "Sadece bir 'apt update' için mi buradayız? Sensei, bu ISO çok kawaii!" - Arona
+    </div>
+
+    <footer>
+        &copy; 2026 ArchiveOS Project. Gnu General Public License v3.0
+    </footer>
+
+    <script>
+        const content = {
+            tr: {
+                hero: "Blue Archive'dan Fırlamış Gibi!",
+                dl: "ISO İndir",
+                f1t: "Oyun Odaklı Optimize",
+                f1d: "ArchiveOS Guide. Steam, Lutris, Heroic - hepsi hazır!",
+                f2t: "Günlük Kullanıma Uygun",
+                f2d: "Hafif, hızlı ve kullanıcı dostu.",
+                f3t: "Blue Archive Esintisi",
+                f3d: "Sensei'ler için özel temalar ve ikonlar.",
+                quote: "\"Sadece bir 'apt update' için mi buradayız? Sensei, bu ISO çok kawaii!\" - Arona"
+            },
+            en: {
+                hero: "Straight Outta Blue Archive!",
+                dl: "Download ISO",
+                f1t: "Gaming Optimized",
+                f1d: "ArchiveOS Guide , Steam, Lutris, Heroic - all ready!",
+                f2t: "Daily Driver Ready",
+                f2d: "Lightweight, fast, and user-friendly for everyone.",
+                f3t: "Blue Archive Vibe",
+                f3d: "Custom icons and themes made for Sensei with love!",
+                quote: "\"Are we just here for an 'apt update'? Sensei, this ISO is so kawaii!\" - Arona"
+            }
+        };
+
+        function toggleLang(lang) {
+            document.getElementById('tr-btn').classList.toggle('active', lang === 'tr');
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+
+            document.getElementById('hero-sub').innerText = content[lang].hero;
+            document.getElementById('dl-btn').innerText = content[lang].dl;
+            document.getElementById('f1-t').innerText = content[lang].f1t;
+            document.getElementById('f1-d').innerText = content[lang].f1d;
+            document.getElementById('f2-t').innerText = content[lang].f2t;
+            document.getElementById('f2-d').innerText = content[lang].f2d;
+            document.getElementById('f3-t').innerText = content[lang].f3t;
+            document.getElementById('f3-d').innerText = content[lang].f3d;
+            document.getElementById('quote').innerText = content[lang].quote;
+        }
+    </script>
+</body>
+</html>
+    </div>
+
+    <div class="quote-box" id="quote">
+       WARNİNG : ArchiveOS is a Linux distribution inspired by Blue Archive. Blue Archive's copyrights belong to Nexon Games and Yostar Games, while ArchiveOS was developed independently of these companies. It is Debian-based.   </div>
+
+<div style="margin: 20px 10% 50px 10%; background: #161b22; border: 1px solid #00f2ff; border-radius: 8px; padding: 20px;">
+        <h2 style="color: #00f2ff; font-size: 1.2rem; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px;">
+            📦 Eski Sürümler / Old Versions
+        </h2>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 5px 0;">
+                <span style="color: #fff;">ArchiveOS beta 2 </span>
+                <a href="https://drive.google.com/file/d/1CoKIX1tjQJ4ZZVjxCpCiDgM11X37it02/view?usp=drive_link" style="color: #ff00ff; text-decoration: none;">[İndir / Download]</a>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 5px 0;">
+                <span style="color: #fff;">ArchiveOS bate 1</span>
+                <a href="https://drive.google.com/file/d/1CNn68ws5scY3KZeNlD4D0cXmHlFVWpPd/view?usp=drive_link" style="color: #ff00ff; text-decoration: none;">[İndir / Download]</a>
+            </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding: 5px 0;">
+                <span style="color: #fff;">ArchiveOS alpha</span>
+                <a href="https://drive.google.com/file/d/1tYnbBhPM1iU0nEzOpa3C0gIeen50Y-zn/view?usp=drive_link" style="color: #ff00ff; text-decoration: none;">[İndir / Download]</a>
+            </div>
+        </div>
+        <p style="font-size: 0.7rem; color: #666; margin-top: 15px;">* Eski sürümler artık güncellenmemektedir. / Older versions do not receive updates.</p>
+    </div>
+
