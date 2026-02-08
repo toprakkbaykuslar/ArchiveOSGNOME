@@ -1,6 +1,9 @@
 # ArchiveOS-Owners.github.io
 # Archive OS
 
+##⚠️ATTENTION
+This is an unofficial GNOME edition forked from ArchiveOS.
+
 Archive OS is an anime-themed Linux distribution inspired by the *Blue Archive* universe.  
 It is designed for both gaming and everyday use, offering a visually distinctive desktop while maintaining practicality, performance, and ease of use.
 
